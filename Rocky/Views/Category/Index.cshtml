@@ -32,14 +32,15 @@
             @foreach (var obj in Model)
             {
                 <tr>
-                    <td width="50%">@obj.Name</td>
+                    <td width="50%">
+                        <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Details">@obj.Name</a>
+                    </td>
                     <td width="30%">@obj.DisplayOrder</td>
                     <td class="text-center">
                         <div class="w-75 btn-group" role="group">
                             <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-success">Edit</a>
                             <a asp-controller="Category" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger">Delete</a>
                         </div>
-
                     </td>
                 </tr>
             }

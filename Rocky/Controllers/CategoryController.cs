@@ -24,8 +24,8 @@ namespace Rocky.Controllers
             {
             IEnumerable<Category> objList = _db.Category;
   
-              objList = objList.Where(x => x.DisplayOrder == 1);
-            
+                // objList=  objList.Where(x => x.DisplayOrder == 1);
+                
         
             return View(objList);
         }
@@ -97,8 +97,7 @@ namespace Rocky.Controllers
         //     }
         //     return View(obj);
         // }
-        [HttpDelete]
-        [ValidateAntiForgeryToken]
+    
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -118,5 +117,21 @@ namespace Rocky.Controllers
             Console.WriteLine("Here");
             return RedirectToAction("Index","Category");
         }
+        public IActionResult Details(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return View();
+            }
+
+            var obj = _db.Category.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+        
     }
 }
